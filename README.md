@@ -60,7 +60,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Laravel Project Commands
+## Composer Commands
 
 Generar clave de cifrado (encryption) para la app
 
@@ -68,10 +68,56 @@ Generar clave de cifrado (encryption) para la app
 php artisan artisan key:generate
 ```
 
-Instalar la API en Laravel >=11.
+Instalar la API en Laravel ^11.0.
 
 ```bash
 php artisan install:api
 ```
 
-## Laravel Docs URLs
+Instalar Paquetes de Google Drive Storage
+
+```bash
+composer require yaza/laravel-google-drive-storage
+```
+
+### Configurar las credenciales
+
+Agrega las siguientes variables de entorno en tu archivo `.env`:
+
+```
+FILESYSTEM_CLOUD=google
+GOOGLE_DRIVE_CLIENT_ID=
+GOOGLE_DRIVE_CLIENT_SECRET=
+GOOGLE_DRIVE_REFRESH_TOKEN=
+GOOGLE_DRIVE_FOLDER=
+GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON=storage/app/credentials.json
+```
+
+### Configurar el Filesystem Disk
+
+Agrega la configuracion del disco en el archivo `config/filesystems.php`
+
+```
+    'google' => [
+            'driver' => 'google',
+            'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+            'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+            'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+            'folder' => env('GOOGLE_DRIVE_FOLDER'),
+            'service_account' => env('GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON'),
+        ]
+```
+
+## Laravel Docs Referencias
+
+-   https://github.com/yaza-putu/laravel-google-drive-storage
+
+-   https://github.com/ivanvermeyen/laravel-google-drive-demo/blob/master/README/1-getting-your-dlient-id-and-secret.md
+
+-   https://github.com/ivanvermeyen/laravel-google-drive-demo/blob/master/README/2-getting-your-refresh-token.md
+
+-   https://gist.github.com/sergomet/f234cc7a8351352170eb547cccd65011
+
+-   https://www.luckymedia.dev/blog/google-drive-api-setup-for-laravel-10-integration-part-1
+
+-   https://www.luckymedia.dev/blog/laravel-project-setup-for-google-drive-api-integration-part-2
