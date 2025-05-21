@@ -9,3 +9,5 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::post('google/upload', [GoogleDriveController::class, 'uploadFile']);
+Route::get('google/show/{name}', [GoogleDriveController::class, 'showFile']);
+Route::delete('google/delete/{name}', [GoogleDriveController::class, 'deleteFile']);

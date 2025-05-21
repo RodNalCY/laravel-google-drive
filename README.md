@@ -80,7 +80,7 @@ Instalar Paquetes de Google Drive Storage
 composer require yaza/laravel-google-drive-storage
 ```
 
-### Configurar las credenciales
+## Configurar las credenciales
 
 Agrega las siguientes variables de entorno en tu archivo `.env`:
 
@@ -93,7 +93,7 @@ GOOGLE_DRIVE_FOLDER=
 GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON=storage/app/credentials.json
 ```
 
-### Configurar el Filesystem Disk
+## Configurar el Filesystem Disk
 
 Agrega la configuracion del disco en el archivo `config/filesystems.php`
 
@@ -106,6 +106,22 @@ Agrega la configuracion del disco en el archivo `config/filesystems.php`
             'folder' => env('GOOGLE_DRIVE_FOLDER'),
             'service_account' => env('GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON'),
         ]
+```
+
+## API Endpoints
+
+```
+POST /api/google/upload
+key     value
+file   (file)
+```
+
+```
+GET /api/google/show/image.jpg
+```
+
+```
+DELETE /api/google/delete/image.jpg
 ```
 
 ## Laravel Docs Referencias
