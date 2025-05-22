@@ -39,7 +39,7 @@ class GoogleDriveController extends Controller
             // Respuesta de éxito
             return response()->json([
                 'status' => true,
-                'file_name' => $file_name,
+                'file_name' => env('GOOGLE_DRIVE_FOLDER') . '/' . $file_name,
                 'message' => 'File uploaded successfully!'
             ], 200);
         } catch (\Exception $e) {
